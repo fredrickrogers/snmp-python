@@ -44,21 +44,11 @@ def run(ip):
     result += poll_oid(ip, "IP-MIB", "ipNetToMediaTable")
     return result
 
-# def write_file(filename, results):
-#     f = open(filename, "w")
-#     f.writelines(results)
-#     f.close()
-#     return f
-
 def post_to_s3(ip, results):
     filename = ip + ".txt"
     object_name = BUCKET_FOLDER + filename
     s3 = boto3.resource('s3', aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_KEY)
     s3.Object(BUCKET_NAME, object_name).put(Body=results)
-
-# def remove_file(file):
-#     if os.path.exists(file.name):
-#         os.remove(file.name)
 
 IPS = [
     "18.232.126.238",
