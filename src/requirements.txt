@@ -1,0 +1,4 @@
+pyasn1
+pysnmp-mibs
+boto3
+pysnmp==4.4.6
